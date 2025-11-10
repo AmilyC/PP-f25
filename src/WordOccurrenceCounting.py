@@ -62,12 +62,12 @@ def exactCounting(books,k,study=0):
     global numWords, numTokens
 
     exactCtr = Counter()
-
+    print(nltk.corpus.stopwords.words("english"))
     for b in books:
         #print("\n" + b[0])
         for lang in b[1]:
             #print(lang[0])
-            f = open(lang[1], "r")
+            f = open(lang[1], "r", encoding="utf-8")
             for line in f:
                 words = re.findall(r'\w+',line)
                 for word in words:
@@ -98,7 +98,7 @@ def approxCountingFixedProb(books,k,prob,study=0):
         #print("\n" + b[0])
         for lang in b[1]:
             #print(lang[0])
-            f = open(lang[1], "r")
+            f = open(lang[1], "r", encoding="utf-8")
             for line in f:
                 words = re.findall(r'\w+',line)
                 for word in words:
@@ -134,7 +134,7 @@ def approxCountingLogarithmic(books,k,base,study=0):
         #print("\n" + b[0])
         for lang in b[1]:
             #print(lang[0])
-            f = open(lang[1], "r")
+            f = open(lang[1], "r",encoding="utf-8")
             for line in f:
                 words = re.findall(r'\w+',line)
                 for word in words:
@@ -517,7 +517,7 @@ def generateMemoryUsageTable(k,out):
     global results
     global numWords, numTokens
 
-    csvFile = open(out + "memory_usage.csv","w")
+    csvFile = open(out + "memory_usage.csv","w", encoding="utf-8")
 
     # Total number of words and of relevant words only of each book in each translation
     csvFile.write("Total number of words and of relevant words only of each book in each translation:\n")
@@ -597,8 +597,8 @@ def generateResultsTable(k,out):
     AF = "Approximate Counter w/ Fixed Prob"
     AL = "Approximate Counter w/ Logarithmic Prob"
 
-    txtFile = open(out + "results.txt","w")
-    csvFile = open(out + "results.csv","w")
+    txtFile = open(out + "results.txt","w", encoding="utf-8")
+    csvFile = open(out + "results.csv","w", encoding="utf-8")
 
     #print(" {:4s} | {:4s} || {:11s} | {:9s} || {:11s} | {:12s} | {:12s} | {:7s} | {:7s} | {:16s} | {:11s} || {:11s} | {:12s} | {:16s} | {:12s} | {:7s} | {:7s} | {:16s} | {:11s} \n".format("Book","Lang","Words","Exact Ctr","Words","Fix Prob Ctr","Mean Avg Dev","Std Dev","Max Dev","Mean Rel Err (%)","Avg Err (%)","Words","Log Prob Ctr","Mean Avg Log Dev","Mean Avg Dev","Std Dev","Max Dev","Mean Rel Err (%)","Avg Err (%)"))
     #print("------" + line)
