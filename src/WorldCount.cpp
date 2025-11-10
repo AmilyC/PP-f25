@@ -61,7 +61,7 @@ int main(){
     std::stringstream ss;
     ss << ifs.rdbuf();
     std::string str(ss.str());
-    std::cout << str;
+   // std::cout << str;
     ifs.close(); 
 
     
